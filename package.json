@@ -2,25 +2,39 @@
   "name": "technical-preview",
   "version": "1.0.0",
   "description": "a technical preview task",
-  "main": "server.ts",
+  "main": "dist/server.js",
   "scripts": {
-    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
-    "build": "tsc",
-    "start": "nodemon server.ts",
-    "test": "test"
+    "dev": "nodemon src/server.ts",
+    "build": "tsc --project tsconfig.build.json",
+    "test": "jest --detectOpenHandles",
+    "test:coverage": "npm run test -- --coverage",
+    "test:ci": "npm run test -- --colors --coverage --ci",
+    "lint": "eslint --ext .ts,.js .",
+    "format": "prettier \"./**\" --write --ignore-unknown",
+    "format:check": "prettier \"./**\" --ignore-unknown --check"
   },
   "author": "stgeipel",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stgeipel/technical-preview"
+  },
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "winston": "^3.8.2"
+    "express-validator": "^6.14.2"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.14",
     "@types/node": "^18.11.8",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "cross-env": "^7.0.3",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
     "nodemon": "^2.0.20",
+    "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
     "tslint": "^6.1.3",
     "typescript": "^4.8.4"

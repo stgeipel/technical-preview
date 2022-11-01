@@ -6,4 +6,5 @@ const getEvaluationByUrls = (urls: [string]) => {
   console.log('test')
   console.log(urls)
 }
+
 export { getEvaluationByUrls }

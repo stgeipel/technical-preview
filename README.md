@@ -7,5 +7,5 @@ This Project is a technical Task.
 - Clone Repo
 - `cd technical-preview`
 - `cp .env.sample .env`
-- npm i
-- npm start
+- `npm i`
+- `npm start`

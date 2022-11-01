@@ -2,7 +2,9 @@ import { NextFunction, Request, Response } from 'express'
 
 async function get(req: Request, res: Response, next: NextFunction) {
   try {
-    console.log(req.query)
+    const evaluationQuerysUrls = req.query.url as string[]
+
+    console.log(evaluationQuerysUrls)
 
     res.json('ok')
     //res.json(await getEvaluationByUrls(req.params))
