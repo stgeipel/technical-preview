@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint/eslint-plugin', 'import', 'eslint-plugin-tsdoc'],
+  plugins: ['@typescript-eslint/eslint-plugin', 'import'],
   extends: ['plugin:@typescript-eslint/recommended'],
   env: {
     jest: true,

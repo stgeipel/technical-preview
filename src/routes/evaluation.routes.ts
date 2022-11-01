@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express'
 import { query, ValidationChain, validationResult } from 'express-validator'
-import { get } from '../controllers/evaluation.controller'
+import { get } from '../controllers/evaluation/evaluation.controller'
 
 const router = express.Router()
 const urlRegex =
