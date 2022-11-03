@@ -1,5 +1,5 @@
 import bodyParser from 'body-parser'
-import express, { NextFunction, Request, Response } from 'express'
+import express from 'express'
 import { Config } from './config'
 import HttpException from './exeptions/httpException'
 import evalaluationRouter from './routes/evaluation.routes'
@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 })
 
 /* Error handler middleware */
-app.use((err: HttpException, req: Request, res: Response, next: NextFunction) => {
+app.use((err: HttpException) => {
   console.log(`[ERR]:${err.message}`)
 })
 
