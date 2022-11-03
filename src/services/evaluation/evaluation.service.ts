@@ -28,8 +28,9 @@ async function getEvaluationByUrls(urls: string[]): Promise<IEvaluationResponse>
 
   const files = await Promise.all(promises)
   for (const filepath of files) {
-    evaluations = [...(await readFileContent(filepath))]
+    evaluations = [...evaluations, ...(await readFileContent(filepath))]
   }
+  console.log(evaluations)
   return {
     MostSpeeches: getMostSpeechesInYearFromArray(evaluations, 2013),
     MostSecurity: getMostSecurityInTopicFromArray(evaluations, 'Internal Security'),
@@ -71,7 +72,6 @@ function getMostSecurityInTopicFromArray(evaluations: IEvaluationRow[], topic: s
   evaluationCopy.forEach(evaluation => {
     dictonary[evaluation.Speaker] = dictonary[evaluation.Speaker] != null ? dictonary[evaluation.Speaker] + 1 : 1
   })
-
   return getMaxValueFromDictonary(dictonary)
 }
 
