@@ -8,4 +8,4 @@ This Project is a technical Task.
 - `cd technical-preview`
 - `cp .env.sample .env`
 - `npm i`
-- `npm start`
+- `npm run dev`
