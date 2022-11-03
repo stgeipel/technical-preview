@@ -14,7 +14,7 @@ async function getEvaluationByUrls(urls: string[]) {
 
   urls.forEach(url => {
     const filename = getFileNameFromUrl(url)
-    promises.push(downloadFile(url, `./docs/tmp-${filename}`))
+    promises.push(downloadFile(url, `./docs/tmp/${filename}`))
   })
 
   const files = await Promise.all(promises)
