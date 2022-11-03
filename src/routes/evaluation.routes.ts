@@ -1,11 +1,9 @@
 import express, { NextFunction, Request, Response } from 'express'
-import { query, ValidationChain, validationResult } from 'express-validator'
+import { ValidationChain, validationResult } from 'express-validator'
 import { get } from '../controllers/evaluation/evaluation.controller'
+import { evaluationValidator } from '../validators/evaluation.validator'
 
 const router = express.Router()
-const urlRegex =
-  '^(http://www.|https://www.|http://|https://)?[a-z0-9]+([-.]{1}[a-z0-9]+)*.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?$'
-const regexExpressionForUrl = new RegExp(urlRegex)
 
 /**
  *
@@ -14,7 +12,7 @@ const regexExpressionForUrl = new RegExp(urlRegex)
  */
 const validate = (validations: ValidationChain[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
-    for (let validation of validations) {
+    for (const validation of validations) {
       const result = await validation.run(req)
       if (result.context.errors.length) break
     }
@@ -35,14 +33,6 @@ const validate = (validations: ValidationChain[]) => {
  * url query param should match the regex expression
  * url sanitize to an array
  */
-router.get(
-  '/',
-  validate([
-    query('url').notEmpty(),
-    query('url').custom(url => regexExpressionForUrl.test(url)),
-    query('url').toArray(),
-  ]),
-  get,
-)
+router.get('/', validate(evaluationValidator), get)
 
 export default router

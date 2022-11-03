@@ -20,6 +20,7 @@
     "url": "https://github.com/stgeipel/technical-preview"
   },
   "dependencies": {
+    "csv-parse": "^5.3.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-validator": "^6.14.2"
