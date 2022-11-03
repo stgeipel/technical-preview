@@ -5,9 +5,7 @@ async function get(req: Request, res: Response, next: NextFunction) {
   try {
     const evaluationQuerysUrls = req.query.url as string[]
 
-    await getEvaluationByUrls(evaluationQuerysUrls)
-    res.json('ok')
-    //res.json(await getEvaluationByUrls(req.params))
+    res.json(await getEvaluationByUrls(evaluationQuerysUrls))
   } catch (err) {
     next(err)
   }
